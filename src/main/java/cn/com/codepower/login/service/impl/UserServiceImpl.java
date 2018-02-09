@@ -11,6 +11,7 @@ import cn.com.codepower.login.controller.UserController;
 import cn.com.codepower.login.dao.UserDao;
 import cn.com.codepower.login.entity.User;
 import cn.com.codepower.login.service.UserService;
+import cn.com.codepower.util.UserUtil;
 
 /**
  * User的业务实现类
@@ -55,6 +56,7 @@ public class UserServiceImpl implements UserService {
 		if(byUsername!=null) {
 			throw new RuntimeException("用户名已存在！");
 		}
+		user.setId(UserUtil.getUUID());
 		Integer insertUser = userDao.insertUser(user);
 		logger.info(insertUser.toString());
 		User userByUsername = userDao.selectUserByUsername(user.getUserName());

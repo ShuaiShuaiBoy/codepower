@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 用户类
+ * 用户类（cop_user）
  * 
  * @author Shuaishuai
  *
