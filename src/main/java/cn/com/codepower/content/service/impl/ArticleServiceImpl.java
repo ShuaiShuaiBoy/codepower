@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import cn.com.codepower.content.dao.ArticleDao;
 import cn.com.codepower.content.entity.Article;
 import cn.com.codepower.content.service.ArticleService;
+import cn.com.codepower.util.CommonUtil;
 
 /**
  * 文章的业务时限类
@@ -26,32 +27,35 @@ public class ArticleServiceImpl implements ArticleService {
 	
 	@Override
 	public List<Article> queryArticleAll() {
-		
-		return null;
+		List<Article> articleAll = articleDao.selectArticleAll();
+		return articleAll;
 	}
 
 	@Override
 	public List<Article> queryArticleByState(String state) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Article> articleByState = articleDao.selectArticleByState(state);
+		return articleByState;
 	}
 
 	@Override
 	public Article queryArticleById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Article articleById = articleDao.selectArticleById(id);
+		return articleById;
 	}
 
 	@Override
 	public Article addArticle(Article article) {
-		// TODO Auto-generated method stub
-		return null;
+		article.setId(CommonUtil.getUUID());
+		articleDao.insertArticle(article);
+		Article articleById = articleDao.selectArticleById(article.getId());
+		return articleById;
 	}
 
 	@Override
 	public Article enditArticle(Article article) {
-		// TODO Auto-generated method stub
-		return null;
+		articleDao.updateArticle(article);
+		Article articleById = articleDao.selectArticleById(article.getId());
+		return articleById;
 	}
 
 }

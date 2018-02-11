@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.com.codepower.login.entity.User;
 import cn.com.codepower.login.service.UserService;
 
+/**
+ * 用户的控制类
+ * @author Shuaishuai
+ *
+ */
 @Controller
 @EnableAutoConfiguration
 public class UserController {

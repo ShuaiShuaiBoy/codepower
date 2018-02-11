@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import cn.com.codepower.login.dao.UserDao;
 import cn.com.codepower.login.entity.User;
 import cn.com.codepower.login.service.UserService;
+import cn.com.codepower.util.CommonUtil;
 import cn.com.codepower.util.UserUtil;
 
 /**
@@ -55,7 +56,8 @@ public class UserServiceImpl implements UserService {
 		if (byUsername != null) {
 			throw new RuntimeException("用户名已存在！");
 		}
-		user.setId(UserUtil.getUUID());
+		user.setId(CommonUtil.getUUID());
+		user.setPassword(UserUtil.md5Password(user.getPassword()));
 		Integer insertUser = userDao.insertUser(user);
 		logger.info(insertUser.toString());
 		User userByUsername = userDao.selectUserByUsername(user.getUserName());
@@ -77,6 +79,10 @@ public class UserServiceImpl implements UserService {
 		User userById = userDao.selectUserById(user.getId());
 		if (userById == null) {
 			throw new RuntimeException("没有此用户！");
+		}
+		//判断是否修改密码
+		if(user.getPassword()!=null && !user.getPassword().equals("") && !UserUtil.md5Password(user.getPassword()).equals(UserUtil.md5Password(userById.getPassword()))) {
+			user.setPassword(UserUtil.md5Password(user.getPassword()));
 		}
 		Integer integer = userDao.updateUser(user);
 		logger.info(integer.toString());
