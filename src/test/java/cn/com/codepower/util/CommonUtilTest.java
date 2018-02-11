@@ -13,7 +13,7 @@ public class CommonUtilTest {
 	
 	@Test
 	public void testMd5Password() {
-		String md5Password = CommonUtil.md5Password("123A56789");
+		String md5Password = UserUtil.md5Password("123A56789");
 		System.out.println(md5Password);
 	}
 }
