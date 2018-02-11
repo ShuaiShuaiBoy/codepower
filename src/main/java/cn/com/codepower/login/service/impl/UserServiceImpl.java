@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.com.codepower.login.controller.UserController;
 import cn.com.codepower.login.dao.UserDao;
 import cn.com.codepower.login.entity.User;
 import cn.com.codepower.login.service.UserService;
@@ -22,7 +21,7 @@ import cn.com.codepower.util.UserUtil;
 @Service
 public class UserServiceImpl implements UserService {
 
-	private Logger logger = LoggerFactory.getLogger(UserController.class);
+	private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	private UserDao userDao;
@@ -39,21 +38,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User login(User user) {
 		User byUsername = userDao.selectUserByUsername(user.getUserName());
-		
-		if(byUsername==null) {
+
+		if (byUsername == null) {
 			throw new RuntimeException("用户不存在!");
 		}
-		if(!byUsername.getPassword().equals(user.getPassword())) {
+		if (!byUsername.getPassword().equals(user.getPassword())) {
 			throw new RuntimeException("密码错误!");
 		}
-		
+
 		return byUsername;
 	}
 
 	@Override
 	public User register(User user) {
 		User byUsername = userDao.selectUserByUsername(user.getUserName());
-		if(byUsername!=null) {
+		if (byUsername != null) {
 			throw new RuntimeException("用户名已存在！");
 		}
 		user.setId(UserUtil.getUUID());
@@ -66,17 +65,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User queryUserById(String id) {
 		User userById = userDao.selectUserById(id);
-		if(userById==null) {
+		if (userById == null) {
 			throw new RuntimeException("没有此用户！");
 		}
-		
+
 		return userById;
 	}
 
 	@Override
 	public User reviseUser(User user) {
 		User userById = userDao.selectUserById(user.getId());
-		if(userById==null) {
+		if (userById == null) {
 			throw new RuntimeException("没有此用户！");
 		}
 		Integer integer = userDao.updateUser(user);

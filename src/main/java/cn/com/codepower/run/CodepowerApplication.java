@@ -11,6 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class CodepowerApplication {
 
 	public static void main(String[] args) { 
-		SpringApplication.run(CodepowerApplication.class, args);
+		SpringApplication.run(CodepowerApplication.class, args); 
 	}
 }

@@ -2,6 +2,8 @@ package cn.com.codepower.content.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import cn.com.codepower.content.entity.Article;
 
 /**
@@ -9,6 +11,7 @@ import cn.com.codepower.content.entity.Article;
  * @author Shuaishuai
  *
  */
+@Mapper
 public interface ArticleDao {
 	
 	/**

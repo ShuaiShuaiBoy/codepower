@@ -5,7 +5,7 @@
 <mapper namespace="cn.com.codepower.login.dao.UserDao">
 	
 	<!-- 查询所有用户 -->
-	<select id="selectUserAll" resultType="cn.com.codepower.login.entity.User">
+	<select id="selectUserAll" resultType="User">
 		select 
 			* 
 		from 
@@ -13,7 +13,7 @@
 	</select>
 	
 	<!-- 根据用户名查询用户 -->
-	<select id="selectUserByUsername" resultType="cn.com.codepower.login.entity.User" parameterType="String">
+	<select id="selectUserByUsername" resultType="User" parameterType="String">
 		select 
 			* 
 		from 
@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- 根据id查询用户 -->
-	<select id="selectUserById" resultType="cn.com.codepower.login.entity.User" parameterType="String">
+	<select id="selectUserById" resultType="User" parameterType="String">
 		select 
 			* 
 		from 
@@ -33,7 +33,7 @@
 	</select>
 	
 	<!-- 根据状态查询用户 -->
-	<select id="selectUserByState" resultType="cn.com.codepower.login.entity.User" parameterType="String">
+	<select id="selectUserByState" resultType="User" parameterType="String">
 		select 
 			* 
 		from 
@@ -43,7 +43,7 @@
 	</select>
 	
 	<!-- 添加用户 -->
-	<insert id="insertUser" parameterType="cn.com.codepower.login.entity.User">
+	<insert id="insertUser" parameterType="User">
 		insert into 
 			cop_user
 		values
@@ -51,7 +51,7 @@
 	</insert>
 	
 	<!-- 修改用户 -->
-	<update id="updateUser" parameterType="cn.com.codepower.login.entity.User">
+	<update id="updateUser" parameterType="User">
 		update 
 			cop_user
 		set
