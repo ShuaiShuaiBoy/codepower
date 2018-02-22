@@ -8,6 +8,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   thymeleaf: 
     cache: false
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
 #MyBatis配置
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
