@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png">
+    <link rel="apple-touch-icon" href="/webIco.ico">
     <link rel="icon" href="/webIco.ico">
     <title>
                   首页
@@ -25,14 +25,27 @@
     <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="/">Material Kit </a>
+                <a class="navbar-brand" href="/profilePage" th:if="${session.user != null}">
+                   <div class="logo">
+                        <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="30" height="30">
+                        <span th:text="${session.user.name}">Name</span>
+                   </div>
+                </a> 
+                <a class="btn btn-primary btn-sm" href="/" th:if="${session.user == null}" data-toggle="modal" data-target="#loginModal">
+                                       登陆
+                </a>
+                <a class="btn btn-primary btn-sm" href="/signupPage" th:if="${session.user == null}">
+                                       注册
+                </a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse">
+            
+            <div th:if="${session.user != null}" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a href="#pablo" class="nav-link"><i class="material-icons">email</i>消息</a>
@@ -43,21 +56,24 @@
                     <li class="dropdown nav-item">
                         <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">
                            <i class="material-icons">settings</i>
+                                                            选项
                            <b class="caret"></b>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                             <h6 class="dropdown-header">Dropdown header</h6>
-                             <a href="#pablo" class="dropdown-item">Action</a>
-                             <a href="#pablo" class="dropdown-item">Another action</a>
-                             <a href="#pablo" class="dropdown-item">Something else here</a>
+                             <h6 class="dropdown-header">操作</h6>
+                             <a href="#pablo" class="dropdown-item">我的文章</a>
+                             <a href="#pablo" class="dropdown-item">文章收藏</a>
+                             <a href="#pablo" class="dropdown-item">浏览历史</a>
                              <div class="dropdown-divider"></div>
-                             <a href="#pablo" class="dropdown-item">Separated link</a>
+                             <a href="#pablo" class="dropdown-item">个人信息</a>
                              <div class="dropdown-divider"></div>
-                             <a href="#pablo" class="dropdown-item">One more separated link</a>
+                             <a href="/logout" class="dropdown-item">账号退出</a>
                         </div>
                      </li>
                 </ul>
             </div>
+            
+            
         </div>
     </nav>
     <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('assets/img/bg2.jpg');">
@@ -99,12 +115,12 @@
                                             <ul class="nav nav-tabs" data-tabs="tabs">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" href="#profile1" data-toggle="tab">
-                                                        <i class="material-icons">face</i> 文章信息
+                                                                                                              文章信息
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#messages1" data-toggle="tab">
-                                                        <i class="material-icons">chat</i> 作者
+                                                                                                               作者
                                                     </a>
                                                 </li>
                                             </ul>
@@ -112,12 +128,13 @@
                                     </div>
                                 </div>
                                 <div class="card-body ">
-                                    <div class="tab-content text-center">
+                                    <div class="tab-content text-left">
                                         <div class="tab-pane active" id="profile1">
-                                            <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+                                            <p class="h4">标题1</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
                                         </div>
                                         <div class="tab-pane" id="messages1">
-                                            <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
                                         </div>
                                     </div>
                                 </div>
@@ -134,19 +151,19 @@
                                             <ul class="nav nav-tabs" data-tabs="tabs">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" href="#profile2" data-toggle="tab">
-                                                        <i class="material-icons">face</i> 文章信息
+                                                                                                              文章信息
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#messages2" data-toggle="tab">
-                                                        <i class="material-icons">chat</i> 作者
+                                                                                                               作者
                                                     </a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body ">
+                                <div class="card-body">
                                     <div class="tab-content text-center">
                                         <div class="tab-pane active" id="profile2">
                                             <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
@@ -159,36 +176,203 @@
                             </div>
                             <!-- End Tabs with icons on Card -->
                         </div>
+                        
+                        <div class="col-md-6">
+                            <!-- Tabs with icons on Card -->
+                            <div class="card card-nav-tabs">
+                                <div class="card-header card-header-primary">
+                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                    <div class="nav-tabs-navigation">
+                                        <div class="nav-tabs-wrapper">
+                                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
+                                                                                                              文章信息
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
+                                                                                                               作者
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="tab-content text-left">
+                                        <div class="tab-pane active" id="profile1">
+                                            <p class="h4">标题1</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
+                                        </div>
+                                        <div class="tab-pane" id="messages1">
+                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Tabs with icons on Card -->
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <!-- Tabs with icons on Card -->
+                            <div class="card card-nav-tabs">
+                                <div class="card-header card-header-primary">
+                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                    <div class="nav-tabs-navigation">
+                                        <div class="nav-tabs-wrapper">
+                                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
+                                                                                                              文章信息
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
+                                                                                                               作者
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="tab-content text-left">
+                                        <div class="tab-pane active" id="profile1">
+                                            <p class="h4">标题1</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
+                                        </div>
+                                        <div class="tab-pane" id="messages1">
+                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Tabs with icons on Card -->
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <!-- Tabs with icons on Card -->
+                            <div class="card card-nav-tabs">
+                                <div class="card-header card-header-primary">
+                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                    <div class="nav-tabs-navigation">
+                                        <div class="nav-tabs-wrapper">
+                                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
+                                                                                                              文章信息
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
+                                                                                                               作者
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="tab-content text-left">
+                                        <div class="tab-pane active" id="profile1">
+                                            <p class="h4">标题1</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
+                                        </div>
+                                        <div class="tab-pane" id="messages1">
+                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Tabs with icons on Card -->
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <!-- Tabs with icons on Card -->
+                            <div class="card card-nav-tabs">
+                                <div class="card-header card-header-primary">
+                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                    <div class="nav-tabs-navigation">
+                                        <div class="nav-tabs-wrapper">
+                                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
+                                                                                                              文章信息
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
+                                                                                                               作者
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="tab-content text-left">
+                                        <div class="tab-pane active" id="profile1">
+                                            <p class="h4">标题1</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
+                                        </div>
+                                        <div class="tab-pane" id="messages1">
+                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Tabs with icons on Card -->
+                        </div>
                     </div>
                 </div>
                 
-                
             </div>
+            
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+  	               <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="0">首页</a>
+                   </li>
+                   <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1">上一页</a>
+                   </li>
+                   <li class="page-item"><a class="page-link" href="#">1</a></li>
+                   <li class="page-item"><a class="page-link" href="#">2</a></li>
+                   <li class="page-item"><a class="page-link" href="#">3</a></li>
+                   <li class="page-item">
+                      <a class="page-link" href="#">下一页</a>
+                   </li>
+                </ul>
+            </nav>
+
         </div>
         
     </div>
+    
+   
    
     <footer class="footer ">
         <div class="container">
             <nav class="pull-left">
                 <ul>
                     <li>
-                        <a href="https://www.creative-tim.com">
+                        <a href="/">
                                                        关于网站
                         </a>
                     </li>
                     <li>
-                        <a href="http://presentation.creative-tim.com">
+                        <a href="/">
                                                         帮助
                         </a>
                     </li>
                     <li>
-                        <a href="http://blog.creative-tim.com">
+                        <a href="/">
                                                          网站推广
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.creative-tim.com/license">
+                        <a href="https://www.baidu.com/" target="_blank">
                                                          搜索
                         </a>
                     </li>
@@ -199,10 +383,72 @@
                 <script>
                     document.write(new Date().getFullYear())
                 </script>, 使用网站须知 <i class="material-icons">favorite</i> 
-                <a href="https://www.creative-tim.com" target="_blank">CodePower</a> 网站。
+                <a href="/" target="_blank">CodePower</a> 网站。
             </div>
         </div>
     </footer>
+    
+     <!-- 登陆的model -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="">
+    <div class="modal-dialog modal-login" role="document">
+        <div class="modal-content">
+            <div class="card card-signup card-plain">
+            	<div class="modal-header justify-content-left">
+            	     <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button> -->
+                	<a href="#pablo" class="btn btn-primary btn-link btn-wd btn-sm" data-dismiss="modal">关闭</a>
+                </div>
+               <!--  <div class="modal-header justify-content-center">
+                    <div class="card-header card-header-primary text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+                        <h4 class="card-title">Log in</h4>
+                        <div class="social-line">
+                            <a href="#pablo" class="btn btn-just-icon btn-link">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a href="#pablo" class="btn btn-just-icon btn-link">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#pablo" class="btn btn-just-icon btn-link">
+                                <i class="fa fa-google-plus"></i>
+                            <div class="ripple-container"></div></a>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <div class="modal-body">
+                    <form class="form" method="post" action="/login">
+                        
+                        <div class="card-body">
+                            <div class="form-group bmd-form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">email</i>
+                                    </span>
+                                    <input name="userName" type="text" class="form-control" placeholder="请输入账号...">
+                                </div>
+                            </div>
+
+                            <div class="form-group bmd-form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">lock_outline</i>
+                                    </span>
+                                    <input name="password" type="password" placeholder="请输入密码..." class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <!-- <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-lg">登陆</a> -->
+                    <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
     <!--   Core JS Files   -->
     <script src="/assets/js/core/jquery.min.js"></script>
     <script src="/assets/js/core/popper.min.js"></script>
@@ -217,8 +463,14 @@
     <script src="/assets/js/material-kit.js?v=2.0.0"></script>
     <!-- Fixed Sidebar Nav - js With initialisations For Demo Purpose, Don't Include it in your project -->
     <script src="/assets/assets-for-demo/js/material-kit-demo.js"></script>
-    <script>
+    <script th:inline="javascript">
+    	/*<![CDATA[*/
         $(document).ready(function() {
+        	var msg = [[${msg}]];
+        	if(msg != null){
+	           alert(msg);
+        	}
+            
             materialKitDemo.initFormExtendedDatetimepickers();
             // Sliders for demo purpose in refine cards section
             var slider = document.getElementById('sliderRegular');
@@ -242,7 +494,10 @@
                     max: 100
                 }
             });
+            
+            
         });
+    	/*]]>*/
     </script>
 </body>
 

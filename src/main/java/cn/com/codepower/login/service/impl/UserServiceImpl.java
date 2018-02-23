@@ -1,5 +1,6 @@
 package cn.com.codepower.login.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
 		if (byUsername == null) {
 			throw new RuntimeException("用户不存在!");
 		}
-		if (!byUsername.getPassword().equals(user.getPassword())) {
+		if (!byUsername.getPassword().equals(UserUtil.md5Password(user.getPassword()))) {
 			throw new RuntimeException("密码错误!");
 		}
 
@@ -58,6 +59,8 @@ public class UserServiceImpl implements UserService {
 		}
 		user.setId(CommonUtil.getUUID());
 		user.setPassword(UserUtil.md5Password(user.getPassword()));
+		user.setRegTime(new Date());
+		user.setState("1");
 		Integer insertUser = userDao.insertUser(user);
 		logger.info(insertUser.toString());
 		User userByUsername = userDao.selectUserByUsername(user.getUserName());

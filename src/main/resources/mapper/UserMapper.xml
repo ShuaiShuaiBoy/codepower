@@ -47,7 +47,7 @@
 		insert into 
 			cop_user
 		values
-			(#{user.id},#{user.username},#{user.password},#{user.name},#{user.sex},#{user.birthday},#{user.city},#{user.qq},#{user.weChat},#{user.email},#{user.mobile},#{user.regTime},#{user.state})
+			(#{id},#{userName},#{password},#{name},#{sex},#{birthday},#{city},#{qq},#{weChat},#{email},#{mobile},#{regTime},#{state})
 	</insert>
 	
 	<!-- 修改用户 -->
@@ -55,7 +55,7 @@
 		update 
 			cop_user
 		set
-			username=#{user.username},password=#{user.password},name=#{user.name},sex=#{user.sex},birthday=#{user.birthday},city=#{user.city},qq=#{user.qq},weChat=#{weChat},email=#{user.email},mobile=#{user.mobile},regTime=#{user.regTime},state=#{user.state}
+			username=#{user.userName},password=#{user.password},name=#{user.name},sex=#{user.sex},birthday=#{user.birthday},city=#{user.city},qq=#{user.qq},weChat=#{weChat},email=#{user.email},mobile=#{user.mobile},regTime=#{user.regTime},state=#{user.state}
 		where 
 			id=#{user.id}
 	</update>

@@ -1,5 +1,6 @@
 package cn.com.codepower.login.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -31,11 +32,18 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/login")
-	public String login(HttpSession session,User user) {
-		User newUser = userService.login(user);
-		session.setAttribute("user", newUser);
-		logger.info("ID:"+newUser.getId()+",登陆成功.");
-		return "redirect:/";
+	public String login(HttpSession session,User user,HttpServletRequest request) {
+		try {
+			User newUser = userService.login(user);
+			session.setAttribute("user", newUser);
+			logger.info("ID:"+newUser.getId()+",登陆成功.");
+			return "redirect:/";
+		}catch(Exception e) {
+			logger.error("login", e);
+			String message = e.getMessage();
+			request.setAttribute("msg", message);
+			return "forward:/";
+		}
 	}
 	
 	/**
@@ -43,11 +51,18 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/register")
-	public String register(HttpSession session,User user) {
-		User newUser = userService.register(user);
-		session.setAttribute("user", newUser);
-		logger.info("ID:"+newUser.getId()+",登陆成功.");
-		return "redirect:/";
+	public String register(HttpSession session,User user,HttpServletRequest request) {
+		try {
+			User newUser = userService.register(user);
+			session.setAttribute("user", newUser);
+			logger.info("ID:"+newUser.getId()+",登陆成功.");
+			return "redirect:/";
+		}catch(Exception e) {
+			logger.error("register", e);
+			String message = e.getMessage();
+			request.setAttribute("msg", message);
+			return "forward:/signupPage";
+		}
 	}
 	
 	/**
@@ -66,8 +81,9 @@ public class UserController {
 	 * 注销
 	 * @return
 	 */
+	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		session.setAttribute("user", "");
+		session.setAttribute("user", null);
 		return "redirect:/";
 	}
 }
