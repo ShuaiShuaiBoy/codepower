@@ -61,6 +61,15 @@ public class CommonController {
 	 */
 	@RequestMapping("/documentationFree")
 	public String documentationFree() {
-		return "examples/documentation-free";
+		return "docs/documentation-free";
+	}
+	
+	/**
+	 * 文章编辑页面
+	 * @return
+	 */
+	@RequestMapping("/articleEdit")
+	public String articleEdit() {
+		return "examples/article-edit";
 	}
 }

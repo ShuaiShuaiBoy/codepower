@@ -29,7 +29,7 @@
                 <!-- <a class="navbar-brand" href="/">Material Kit </a> -->
                 <a class="navbar-brand" href="/profilePage" th:if="${session.user != null}">
                     <div class="logo">
-                        <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="30" height="30">
+                        <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="25" height="25">
                         <span th:text="${session.user.name}">Name</span>
                     </div>
                 </a> 
@@ -40,44 +40,6 @@
                 </button>
             </div>
 
-            <!-- <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="material-icons">apps</i> Components
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons">
-                            <a href="../index.html" class="dropdown-item">
-                                <i class="material-icons">layers</i> All Components
-                            </a>
-                            <a href="http://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                                <i class="material-icons">content_paste</i> Documentation
-                            </a>
-                        </div>
-                    </li>
-          		    <li class="nav-item">
-          			    <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
-          			        <i class="material-icons">cloud_download</i> Download
-          			    </a>
-          		    </li>
-          		    <li class="nav-item">
-          			    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank" data-original-title="Follow us on Twitter">
-          				    <i class="fa fa-twitter"></i>
-          			    </a>
-          		    </li>
-          		    <li class="nav-item">
-          			    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank" data-original-title="Like us on Facebook">
-          				    <i class="fa fa-facebook-square"></i>
-          			    </a>
-          		    </li>
-          		    <li class="nav-item">
-          			    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank" data-original-title="Follow us on Instagram">
-          			        <i class="fa fa-instagram"></i>
-          			    </a>
-          		    </li>
-                </ul>
-            </div> -->
-            
             <div th:if="${session.user != null}" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -123,18 +85,20 @@
 	                                <img src="/assets/img/faces/christian.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
 	                            </div>
 	                            <div class="name">
-	                                <h3 class="title">Christian Louboutin</h3>
-								    <h6>Designer</h6>
-								    <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+	                                <h3 class="title" th:text="${session.user.name}">Christian Louboutin</h3>
+								    <!-- <h6>Designer</h6> -->
+								    <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                     <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> -->
 	                            </div>
 	                        </div>
     	                </div>
                     </div>
 
                     <div class="description text-center">
-                        <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                        <p class="h5">
+                                                        个人信息展示
+                        </p>
                     </div>
 
 				    <div class="row">
@@ -144,19 +108,19 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
                                             <i class="material-icons">camera</i>
-                                                Studio
+                                                                                                我的栏目
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#works" role="tab" data-toggle="tab">
                                             <i class="material-icons">palette</i>
-                                                Work
+                                                                                                我的评论
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
                                             <i class="material-icons">favorite</i>
-                                                Favorite
+                                                                                                我关注的人
                                         </a>
                                     </li>
                                 </ul>
@@ -166,7 +130,14 @@
         
           <div class="tab-content tab-space">
             <div class="tab-pane active text-center gallery" id="studio">
-  						<div class="row">
+  				我的栏目1
+  				<br/>
+  			        我的栏目2
+  			        <br/>
+  			        我的栏目2
+  			        <br/>
+  			        我的栏目2
+  						<!-- <div class="row">
   							<div class="col-md-3 ml-auto">
   								<img src="/assets/img/examples/studio-1.jpg" class="rounded">
   								<img src="/assets/img/examples/studio-2.jpg" class="rounded">
@@ -175,10 +146,58 @@
   								<img src="/assets/img/examples/studio-5.jpg" class="rounded">
   								<img src="/assets/img/examples/studio-4.jpg" class="rounded">
   							</div>
-  						</div>
-  					</div>
-            <div class="tab-pane text-center gallery" id="works">
-  						<div class="row">
+  						</div> -->
+  			</div>
+            <div class="tab-pane text-left gallery" id="works">
+  						<div class="card bg-info">
+    <div class="card-body">
+        <h5 class="card-category card-category-social">
+            <i class="fa fa-twitter"></i> Twitter
+        </h5>
+        <h4 class="card-title">
+            <a href="#pablo">&quot;You Don&apos;t Have to Sacrifice Joy to Build a Fabulous Business and Life&quot;</a>
+        </h4>
+
+        <div class="card-stats">
+            <div class="author">
+                <a href="#pablo">
+                   <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=334&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="..." class="avatar img-raised">
+                   <span>Tania Andrew</span>
+                </a>
+            </div>
+           <div class="stats ml-auto">
+                <i class="material-icons">favorite</i> 2.4K &#xB7;
+                <i class="material-icons">share</i> 45
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card bg-info">
+    <div class="card-body">
+        <h5 class="card-category card-category-social">
+            <i class="fa fa-twitter"></i> Twitter
+        </h5>
+        <h4 class="card-title">
+            <a href="#pablo">&quot;You Don&apos;t Have to Sacrifice Joy to Build a Fabulous Business and Life&quot;</a>
+        </h4>
+
+        <div class="card-stats">
+            <div class="author">
+                <a href="#pablo">
+                   <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=334&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="..." class="avatar img-raised">
+                   <span>Tania Andrew</span>
+                </a>
+            </div>
+           <div class="stats ml-auto">
+                <i class="material-icons">favorite</i> 2.4K &#xB7;
+                <i class="material-icons">share</i> 45
+            </div>
+        </div>
+    </div>
+</div>
+  						
+  						<!-- <div class="row">
   							<div class="col-md-3 ml-auto">
                   <img src="/assets/img/examples/olu-eletu.jpg" class="rounded">
                   <img src="/assets/img/examples/clem-onojeghuo.jpg" class="rounded">
@@ -188,8 +207,9 @@
                   <img src="/assets/img/examples/mariya-georgieva.jpg" class="rounded">
                   <img src="/assets/img/examples/clem-onojegaw.jpg" class="rounded">
   							</div>
-  						</div>
-  					</div>
+  						</div> -->
+  			</div>
+  					
             <div class="tab-pane text-center gallery" id="favorite">
   						<div class="row">
   							<div class="col-md-3 ml-auto">

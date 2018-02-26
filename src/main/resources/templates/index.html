@@ -27,16 +27,16 @@
             <div class="navbar-translate">
                 <a class="navbar-brand" href="/profilePage" th:if="${session.user != null}">
                    <div class="logo">
-                        <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="30" height="30">
+                        <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="25" height="25">
                         <span th:text="${session.user.name}">Name</span>
                    </div>
-                </a> 
-                <a class="btn btn-primary btn-sm" href="/" th:if="${session.user == null}" data-toggle="modal" data-target="#loginModal">
-                                       登陆
                 </a>
-                <a class="btn btn-primary btn-sm" href="/signupPage" th:if="${session.user == null}">
-                                       注册
-                </a>
+                <a class="navbar-brand" href="/" th:if="${session.user == null}">
+                   <div class="logo">
+                        <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="25" height="25">
+                        <span>游客</span>
+                   </div>
+                </a>  
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
                         <a href="#pablo" class="nav-link"><i class="material-icons">email</i>消息</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#pablo" class="nav-link"><i class="material-icons">library_books</i>写文章</a>
+                        <a href="/articleEdit" class="nav-link"><i class="material-icons">library_books</i>写文章</a>
                     </li>
                     <li class="dropdown nav-item">
                         <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -73,6 +73,23 @@
                 </ul>
             </div>
             
+            
+            <div th:if="${session.user == null}" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"  data-toggle="modal" data-target="#loginModal">
+                            <i class="material-icons">group</i>                            
+                                                        登陆
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signupPage">
+                            <i class="material-icons">add</i>                            
+                                                        注册
+                        </a>
+                    </li>
+                </ul>
+            </div>
             
         </div>
     </nav>
@@ -473,7 +490,7 @@
             
             materialKitDemo.initFormExtendedDatetimepickers();
             // Sliders for demo purpose in refine cards section
-            var slider = document.getElementById('sliderRegular');
+            /* var slider = document.getElementById('sliderRegular');
 
             noUiSlider.create(slider, {
                 start: 40,
@@ -493,7 +510,7 @@
                     min: 0,
                     max: 100
                 }
-            });
+            }); */
             
             
         });

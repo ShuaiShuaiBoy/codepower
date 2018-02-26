@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/webIco.ico">
+    <link rel="icon" href="/webIco.ico">
+    <title>
+                文章编辑
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/material-kit.css?v=2.0.0">
+    
+    <!-- <link rel="stylesheet" href="/xheditor/xheditor_skin/fashion/ui.css">
+    <link rel="stylesheet" href="/xheditor/xheditor_skin/fashion/iframe.css">
+    <link rel="stylesheet" href="/xheditor/editViews.css"> -->
+    
+    <link rel="stylesheet"href="/mdeditor/css/editormd.css" />
+    <!-- Documentation extras -->
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="/assets/assets-for-demo/demo.css" rel="stylesheet"/>
+    <link href="/assets/assets-for-demo/vertical-nav.css" rel="stylesheet"/>
+</head>
+
+
+<body class="profile-page ">
+    <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg "  color-on-scroll="100"  id="sectionsNav">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="/profilePage" th:if="${session.user != null}">
+                    <div class="logo">
+                        <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="25" height="25">
+                        <span th:text="${session.user.name}">Name</span>
+                    </div>
+                </a> 
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div th:if="${session.user != null}" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link"><i class="material-icons">home</i>首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#pablo" class="nav-link"><i class="material-icons">email</i>消息</a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="material-icons">settings</i>
+                                                                选项
+                            <b class="caret"></b>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <h6 class="dropdown-header">操作</h6>
+                            <a href="#pablo" class="dropdown-item">我的文章</a>
+                            <a href="#pablo" class="dropdown-item">文章收藏</a>
+                            <a href="#pablo" class="dropdown-item">浏览历史</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#pablo" class="dropdown-item">个人信息</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/logout" class="dropdown-item">账号退出</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </nav>
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/examples/city.jpg');"></div>
+	    <div class="main main-raised">
+		    <div class="profile-content">
+                <div class="container">
+                    <br>
+                    <h2 class="title">创作文章</h2>
+                    <br>
+                    <!-- <h2 class="title">标题</h2> -->
+                    <div class="form-group">
+                        <label for="exampleInput1" class="bmd-label-floating">文章标题</label>
+                        <input type="email" class="form-control" id="exampleInput1">
+                        <span class="bmd-help">请输入文章标题</span>
+                    </div>
+                    
+                    <div id="my-editormd" class="form-group">
+		                <!-- <textarea id="TextArea1" rows="3"   class="form-control"></textarea> -->
+		                <textarea id="TextArea1"  class="form-control"></textarea>
+                    </div>
+                    
+	                <br>
+	                
+                    <div class="form-group">
+                        <label for="inputAddress">分类</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                    Check me out
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">发布文章</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-warning">保存草稿</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-secondary btn-lg">返回</button>
+                    <br><br>
+            </div>
+        </div>
+	</div>
+
+    <footer class="footer ">
+        <div class="container">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="/">
+                                                       关于网站
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                                                        帮助
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                                                         网站推广
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.baidu.com/" target="_blank">
+                                                         搜索
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>, 使用网站须知 <i class="material-icons">favorite</i> 
+                <a href="/" target="_blank">CodePower</a> 网站。
+            </div>
+        </div>
+    </footer>
+
+        
+
+    <!--   Core JS Files   -->
+    <script src="/assets/js/core/jquery.min.js"></script>
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/bootstrap-material-design.js"></script>
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin  -->
+    <script src="/assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="/assets/js/plugins/nouislider.min.js"></script>
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <script src="/assets/js/material-kit.js?v=2.0.0"></script>
+    <!-- Fixed Sidebar Nav - js With initialisations For Demo Purpose, Don't Include it in your project -->
+    <script src="/assets/assets-for-demo/js/material-kit-demo.js"></script>
+    
+    <!-- 引入富文本框 -->
+    <!-- <script src="/xheditor/xheditor-1.2.13.js"></script> -->
+    <!-- <script src="/xheditor/xheditor-1.2.2.min.js"></script>
+    <script src="/xheditor/xheditor_lang/zh-cn.js"></script> -->
+    <!-- <script src="/ckeditor/ckeditor.js"></script> -->
+    <script src="/mdeditor/editormd.min.js"></script>
+    
+    <script th:inline="javascript">
+    	/*<![CDATA[*/
+        $(document).ready(function() {
+        	var msg = [[${msg}]];
+        	if(msg != null){
+	           alert(msg);
+        	}
+        	
+        	//CKEDITOR.replace('TextArea1');
+            
+        	editormd("my-editormd", {//注意1：这里的就是上面的DIV的id属性值
+                width   : "100%",
+                height  : 640,
+                syncScrolling : "single",
+                path    : "/mdeditor/lib/",//注意2：你的路径
+                saveHTMLToTextarea : true//注意3：这个配置，方便post提交表单
+            });
+        	
+        	/* $('#editor').xheditor({
+                plugins: getCodePlugin(),
+                layerShadow: 0,
+                tools: "Bold,Italic,Underline,Strikethrough,Fontface,Blocktag,FontSize,FontColor,BackColor,|,Align,List,Outdent,Indent,|,Img,Table,Emot,Link,Unlink,Code,|,CsdnFullScreen",
+                upImgUrl: "/UploadImage",
+                width: 600,
+                height: 560, 
+                upImgExt: 'jpg,jpeg,gif,png,bmp',
+                skin: "default",
+                loadCSS: xhCssUrl
+            }); */
+        	
+            materialKitDemo.initFormExtendedDatetimepickers();
+            // Sliders for demo purpose in refine cards section
+            var slider = document.getElementById('sliderRegular');
+
+            noUiSlider.create(slider, {
+                start: 40,
+                connect: [true, false],
+                range: {
+                    min: 0,
+                    max: 100
+                }
+            });
+
+            var slider2 = document.getElementById('sliderDouble');
+
+            noUiSlider.create(slider2, {
+                start: [20, 60],
+                connect: true,
+                range: {
+                    min: 0,
+                    max: 100
+                }
+            });
+            
+            
+        });
+    	/*]]>*/
+    </script>
+    
+</body>
+</html>

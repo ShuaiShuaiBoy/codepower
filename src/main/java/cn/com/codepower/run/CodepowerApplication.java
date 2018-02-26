@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("cn.com.codepower.*.dao")
 public class CodepowerApplication {
 
-	public static void main(String[] args) { 
+	public static void main(String[] args) {
 		SpringApplication.run(CodepowerApplication.class, args); 
 	}
 }
