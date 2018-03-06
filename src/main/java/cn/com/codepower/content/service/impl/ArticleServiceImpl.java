@@ -1,5 +1,6 @@
 package cn.com.codepower.content.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -46,6 +47,9 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public Article addArticle(Article article) {
 		article.setId(CommonUtil.getUUID());
+		article.setCreateTime(new Date());
+		article.setUpdateTime(new Date());
+		article.setState("1");
 		articleDao.insertArticle(article);
 		Article articleById = articleDao.selectArticleById(article.getId());
 		return articleById;

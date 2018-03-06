@@ -44,4 +44,5 @@ public interface ArticleService {
 	 * @return
 	 */
 	Article enditArticle(Article article);
+	
 }

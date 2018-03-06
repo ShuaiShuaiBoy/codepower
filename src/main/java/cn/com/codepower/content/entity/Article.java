@@ -3,52 +3,60 @@ package cn.com.codepower.content.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import cn.com.codepower.login.entity.User;
+
 /**
  * 文章类（cop_article）
+ * 
  * @author Shuaishuai
  *
  */
-public class Article implements Serializable{
+public class Article implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -297162414589578675L; 
+	private static final long serialVersionUID = -297162414589578675L;
 
 	/**
 	 * id
 	 */
 	private String id;
-	
+
 	/**
 	 * 所属用户
 	 */
 	private String userId;
-	
+
 	/**
 	 * 标题
 	 */
 	private String title;
-	
+
 	/**
 	 * 内容
 	 */
 	private String content;
-	
+
 	/**
 	 * 创建时间
 	 */
 	private Date createTime;
-	
+
 	/**
 	 * 修改时间
 	 */
 	private Date updateTime;
-	
+
 	/**
 	 * 状态
 	 */
 	private String state;
+
+	/**
+	 * 用户信息类
+	 */
+	private User user;
 
 	public String getId() {
 		return id;
@@ -105,6 +113,13 @@ public class Article implements Serializable{
 	public void setState(String state) {
 		this.state = state;
 	}
-	
-	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 }

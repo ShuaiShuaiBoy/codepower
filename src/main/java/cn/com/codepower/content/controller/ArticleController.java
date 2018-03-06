@@ -1,11 +1,9 @@
 package cn.com.codepower.content.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.com.codepower.content.entity.Article;
 import cn.com.codepower.content.service.ArticleService;
+import cn.com.codepower.login.entity.User;
 
 /**
  * 文章的控制类
@@ -40,10 +39,12 @@ public class ArticleController {
 	 * @return
 	 */
 	@RequestMapping("/createArticle")
-	public String createArticle(Article article,HttpServletRequest request) {
+	public String createArticle(Article article,HttpServletRequest request,HttpSession session) {
+		User user = (User)session.getAttribute("user");
+		article.setUserId(user.getId());
 		Article addArticle = articleService.addArticle(article);
 		request.setAttribute("article", addArticle);
-		return "";
+		return "redirect:/";
 	}
 	
 	/**

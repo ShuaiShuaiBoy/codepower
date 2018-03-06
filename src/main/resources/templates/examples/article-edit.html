@@ -84,41 +84,42 @@
                     <h2 class="title">创作文章</h2>
                     <br>
                     <!-- <h2 class="title">标题</h2> -->
-                    <div class="form-group">
-                        <label for="exampleInput1" class="bmd-label-floating">文章标题</label>
-                        <input type="email" class="form-control" id="exampleInput1">
-                        <span class="bmd-help">请输入文章标题</span>
-                    </div>
-                    
-                    <div id="my-editormd" class="form-group">
-		                <!-- <textarea id="TextArea1" rows="3"   class="form-control"></textarea> -->
-		                <textarea id="TextArea1"  class="form-control"></textarea>
-                    </div>
-                    
-	                <br>
-	                
-                    <div class="form-group">
-                        <label for="inputAddress">分类</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                    Check me out
-                                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                </span>
-                            </label>
+                    <form action="/article/createArticle" method="post">
+                        <div class="form-group">
+                            <label for="exampleInput1" class="bmd-label-floating">文章标题</label>
+                            <input type="text" class="form-control" id="exampleInput1" name="title">
+                            <span class="bmd-help">请输入文章标题</span>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">发布文章</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-warning">保存草稿</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-secondary btn-lg">返回</button>
+                    
+                        <div id="my-editormd" class="form-group">
+		                    <!-- <textarea id="TextArea1" rows="3"   class="form-control"></textarea> -->
+		                    <textarea id="TextArea1"  class="form-control" name="content"></textarea>
+                        </div>
+	                    <br>
+	                
+                        <div class="form-group">
+                            <label for="inputAddress">分类</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                        Check me out
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">发布文章</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="" class="btn btn-warning">保存草稿</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="" class="btn btn-secondary btn-lg">返回</button>
+                    </form>
                     <br><br>
             </div>
         </div>
