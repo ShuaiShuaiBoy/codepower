@@ -122,7 +122,8 @@
                 <!-- 所有文章展示区 -->
                 <div id="nav-tabs">
                     <div class="row">
-                        <div class="col-md-6">
+                    
+                        <div class="col-md-6" th:each="article,articleStat : ${articleAll}">
                             <!-- Tabs with icons on Card -->
                             <div class="card card-nav-tabs">
                                 <div class="card-header card-header-primary">
@@ -131,12 +132,12 @@
                                         <div class="nav-tabs-wrapper">
                                             <ul class="nav nav-tabs" data-tabs="tabs">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
+                                                    <a class="nav-link active" th:href="${'#profile'+articleStat.count}" data-toggle="tab">
                                                                                                               文章信息
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
+                                                    <a class="nav-link" th:href="${'#messages'+articleStat.count}" data-toggle="tab">
                                                                                                                作者
                                                     </a>
                                                 </li>
@@ -146,47 +147,12 @@
                                 </div>
                                 <div class="card-body ">
                                     <div class="tab-content text-left">
-                                        <div class="tab-pane active" id="profile1">
-                                            <p class="h4">标题1</p>
-                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
+                                        <div class="tab-pane active" th:id="${'profile'+articleStat.count}">
+                                            <p class="h4" th:text="${article.title}">标题1</p>
+                                            <p th:text="${article.content}">&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
                                         </div>
-                                        <div class="tab-pane" id="messages1">
-                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Tabs with icons on Card -->
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Tabs with icons on Card -->
-                            <div class="card card-nav-tabs">
-                                <div class="card-header card-header-primary">
-                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                    <div class="nav-tabs-navigation">
-                                        <div class="nav-tabs-wrapper">
-                                            <ul class="nav nav-tabs" data-tabs="tabs">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#profile2" data-toggle="tab">
-                                                                                                              文章信息
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#messages2" data-toggle="tab">
-                                                                                                               作者
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab-content text-center">
-                                        <div class="tab-pane active" id="profile2">
-                                            <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
-                                        </div>
-                                        <div class="tab-pane" id="messages2">
-                                            <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                                        <div class="tab-pane" th:id="${'messages'+articleStat.count}">
+                                            <p th:text="${article.user.name}">名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
                                         </div>
                                     </div>
                                 </div>
@@ -194,153 +160,7 @@
                             <!-- End Tabs with icons on Card -->
                         </div>
                         
-                        <div class="col-md-6">
-                            <!-- Tabs with icons on Card -->
-                            <div class="card card-nav-tabs">
-                                <div class="card-header card-header-primary">
-                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                    <div class="nav-tabs-navigation">
-                                        <div class="nav-tabs-wrapper">
-                                            <ul class="nav nav-tabs" data-tabs="tabs">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
-                                                                                                              文章信息
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
-                                                                                                               作者
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body ">
-                                    <div class="tab-content text-left">
-                                        <div class="tab-pane active" id="profile1">
-                                            <p class="h4">标题1</p>
-                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
-                                        </div>
-                                        <div class="tab-pane" id="messages1">
-                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Tabs with icons on Card -->
-                        </div>
                         
-                        <div class="col-md-6">
-                            <!-- Tabs with icons on Card -->
-                            <div class="card card-nav-tabs">
-                                <div class="card-header card-header-primary">
-                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                    <div class="nav-tabs-navigation">
-                                        <div class="nav-tabs-wrapper">
-                                            <ul class="nav nav-tabs" data-tabs="tabs">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
-                                                                                                              文章信息
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
-                                                                                                               作者
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body ">
-                                    <div class="tab-content text-left">
-                                        <div class="tab-pane active" id="profile1">
-                                            <p class="h4">标题1</p>
-                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
-                                        </div>
-                                        <div class="tab-pane" id="messages1">
-                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Tabs with icons on Card -->
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <!-- Tabs with icons on Card -->
-                            <div class="card card-nav-tabs">
-                                <div class="card-header card-header-primary">
-                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                    <div class="nav-tabs-navigation">
-                                        <div class="nav-tabs-wrapper">
-                                            <ul class="nav nav-tabs" data-tabs="tabs">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
-                                                                                                              文章信息
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
-                                                                                                               作者
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body ">
-                                    <div class="tab-content text-left">
-                                        <div class="tab-pane active" id="profile1">
-                                            <p class="h4">标题1</p>
-                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
-                                        </div>
-                                        <div class="tab-pane" id="messages1">
-                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Tabs with icons on Card -->
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <!-- Tabs with icons on Card -->
-                            <div class="card card-nav-tabs">
-                                <div class="card-header card-header-primary">
-                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                    <div class="nav-tabs-navigation">
-                                        <div class="nav-tabs-wrapper">
-                                            <ul class="nav nav-tabs" data-tabs="tabs">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#profile1" data-toggle="tab">
-                                                                                                              文章信息
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#messages1" data-toggle="tab">
-                                                                                                               作者
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body ">
-                                    <div class="tab-content text-left">
-                                        <div class="tab-pane active" id="profile1">
-                                            <p class="h4">标题1</p>
-                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
-                                        </div>
-                                        <div class="tab-pane" id="messages1">
-                                            <p>名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Tabs with icons on Card -->
-                        </div>
                     </div>
                 </div>
                 
@@ -349,16 +169,17 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
   	               <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="0">首页</a>
+                      <a class="page-link" href="/1" tabindex="0">首页</a>
                    </li>
-                   <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1">上一页</a>
+                   <li class="page-item" th:if="${pageNum gt 1}">
+                      <a class="page-link" href="/1" th:href="${pageNum}-1">上一页</a>
                    </li>
-                   <li class="page-item"><a class="page-link" href="#">1</a></li>
-                   <li class="page-item"><a class="page-link" href="#">2</a></li>
-                   <li class="page-item"><a class="page-link" href="#">3</a></li>
+                   <li class="page-item disabled" th:if="${pageNum le 1}">
+                      <a class="page-link" href="/1" th:href="${pageNum}-1">上一页</a>
+                   </li>
+                   <li class="page-item" th:each="i:${#numbers.sequence(1, pages)}"><a class="page-link"  href="/1" th:href="${i}" th:text="${i}">1</a></li>
                    <li class="page-item">
-                      <a class="page-link" href="#">下一页</a>
+                      <a class="page-link" href="/1" th:href="${pageNum}+1">下一页</a>
                    </li>
                 </ul>
             </nav>

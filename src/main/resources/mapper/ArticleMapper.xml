@@ -10,7 +10,7 @@
 		select
 			*
 		from
-			cop_article 
+			cop_article
 		where
 			id=#{id}
 	</select>
