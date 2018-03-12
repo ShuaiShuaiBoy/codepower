@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.com.codepower.content.entity.Article;
@@ -44,7 +45,7 @@ public class ArticleController {
 		article.setUserId(user.getId());
 		Article addArticle = articleService.addArticle(article);
 		request.setAttribute("article", addArticle);
-		return "redirect:/";
+		return "redirect:/article/getArticleById/"+addArticle.getId();
 	}
 	
 	/**
@@ -61,10 +62,10 @@ public class ArticleController {
 	/**
 	 * 根据id查询文章
 	 */
-	@RequestMapping("/getArticleById")
-	public String getArticleById(String id,HttpServletRequest request) {
+	@RequestMapping("/getArticleById/{id}")
+	public String getArticleById(@PathVariable(value="id")String id,HttpServletRequest request) {
 		Article article = articleService.queryArticleById(id);
 		request.setAttribute("article", article);
-		return "";
+		return "examples/article-show";
 	}
 }

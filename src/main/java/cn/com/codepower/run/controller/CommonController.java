@@ -48,7 +48,7 @@ public class CommonController {
 		request.setAttribute("total", startPage.getTotal());
 		request.setAttribute("pageNum", startPage.getPageNum());
 		request.setAttribute("pages", startPage.getPages());
-        return "index";
+		return "index";
     }
 	
 	/**

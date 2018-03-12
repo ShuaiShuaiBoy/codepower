@@ -8,35 +8,43 @@
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/webIco.ico">
     <link rel="icon" href="/webIco.ico">
-    <title>
-                  首页
+    <title th:text="${article.title}">
+                文章内容
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/assets/css/material-kit.css?v=2.0.0">
+    
+    <!-- <link rel="stylesheet" href="/xheditor/xheditor_skin/fashion/ui.css">
+    <link rel="stylesheet" href="/xheditor/xheditor_skin/fashion/iframe.css">
+    <link rel="stylesheet" href="/xheditor/editViews.css"> -->
+    
+    <link rel="stylesheet"href="/mdeditor/css/editormd.css" />
     <!-- Documentation extras -->
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="/assets/assets-for-demo/demo.css" rel="stylesheet" />
-    <link href="/assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
+    <link href="/assets/assets-for-demo/demo.css" rel="stylesheet"/>
+    <link href="/assets/assets-for-demo/vertical-nav.css" rel="stylesheet"/>
 </head>
 
-<body class="index-page ">
-    <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+
+<body class="profile-page ">
+    <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg "  color-on-scroll="100"  id="sectionsNav">
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="/profilePage" th:if="${session.user != null}">
-                   <div class="logo">
+                    <div class="logo">
                         <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="25" height="25">
                         <span th:text="${session.user.name}">Name</span>
-                   </div>
-                </a>
+                    </div>
+                </a> 
+                
                 <a class="navbar-brand" href="/" th:if="${session.user == null}">
                    <div class="logo">
                         <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png" width="25" height="25">
                         <span>游客</span>
                    </div>
-                </a>  
+                </a>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,35 +52,34 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            
+
             <div th:if="${session.user != null}" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="#pablo" class="nav-link"><i class="material-icons">email</i>消息</a>
+                        <a href="/" class="nav-link"><i class="material-icons">home</i>首页</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/articleEdit" class="nav-link"><i class="material-icons">library_books</i>写文章</a>
+                        <a href="#pablo" class="nav-link"><i class="material-icons">email</i>消息</a>
                     </li>
                     <li class="dropdown nav-item">
                         <a href="#pablo" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                           <i class="material-icons">settings</i>
-                                                            选项
-                           <b class="caret"></b>
+                            <i class="material-icons">settings</i>
+                                                                选项
+                            <b class="caret"></b>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                             <h6 class="dropdown-header">操作</h6>
-                             <a href="#pablo" class="dropdown-item">我的文章</a>
-                             <a href="#pablo" class="dropdown-item">文章收藏</a>
-                             <a href="#pablo" class="dropdown-item">浏览历史</a>
-                             <div class="dropdown-divider"></div>
-                             <a href="#pablo" class="dropdown-item">个人信息</a>
-                             <div class="dropdown-divider"></div>
-                             <a href="/logout" class="dropdown-item">账号退出</a>
+                            <h6 class="dropdown-header">操作</h6>
+                            <a href="#pablo" class="dropdown-item">我的文章</a>
+                            <a href="#pablo" class="dropdown-item">文章收藏</a>
+                            <a href="#pablo" class="dropdown-item">浏览历史</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#pablo" class="dropdown-item">个人信息</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/logout" class="dropdown-item">账号退出</a>
                         </div>
-                     </li>
+                    </li>
                 </ul>
             </div>
-            
             
             <div th:if="${session.user == null}" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
@@ -93,114 +100,24 @@
             
         </div>
     </nav>
-    <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('assets/img/bg2.jpg');">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <div class="brand">
-                        <h1>CodePower</h1>
-                        <h3>一个自己的学习网站。</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main main-raised">
-        <div class="section section-basic">
-            <div class="container">
-                 <form class="form-inline ml-auto">
-                      <div class="form-group has-blank">
-                           <input type="text" class="form-control" placeholder="Search">
-                      </div>
-                      <button type="submit" class="btn btn-white btn-raised btn-fab btn-round">
-                              <i class="material-icons">search</i>
-                      </button>
-                 </form>
-                 <div class="title">
-                     <h2 class="title">文章浏览</h2>
-                 </div>
-                <!-- 所有文章展示区 -->
-                <div id="nav-tabs">
-                    <div class="row">
-                    
-                        <div class="col-md-6" th:each="article,articleStat : ${articleAll}">
-                            <!-- Tabs with icons on Card -->
-                            <div class="card card-nav-tabs">
-                                <div class="card-header card-header-primary">
-                                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                    <div class="nav-tabs-navigation">
-                                        <div class="nav-tabs-wrapper">
-                                            <ul class="nav nav-tabs" data-tabs="tabs">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" th:href="${'#profile'+articleStat.count}" data-toggle="tab">
-                                                                                                              文章信息
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" th:href="${'#messages'+articleStat.count}" data-toggle="tab">
-                                                                                                               作者
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body ">
-                                    <div class="tab-content text-left">
-                                        <div class="tab-pane active" th:id="${'profile'+articleStat.count}">
-                                            <p class="h4" th:text="${article.title}">标题1</p>
-                                            <p th:text="${article.content}">&nbsp;&nbsp;&nbsp;&nbsp;内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容...<a href="#"><span class="mb-0">完整文章</span></a></p>
-                                        	<a href="#" th:href="${'article/getArticleById/'+article.id}" target="_blank">查看文章>></a>
-                                        </div>
-                                        <div class="tab-pane" th:id="${'messages'+articleStat.count}">
-                                            <p th:text="${article.user.name}">名字&nbsp;&nbsp;分类&nbsp;&nbsp;</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Tabs with icons on Card -->
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-                
-            </div>
-            
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-  	               <li class="page-item">
-                      <a class="page-link" href="/1">首页</a>
-                   </li>
-                   <li class="page-item disabled" th:if="${pageNum eq null}" >
-                      <a class="page-link" >上一页</a>
-                   </li>
-                   <li class="page-item" th:if="${pageNum ne null and pageNum gt 1}">
-                      <a class="page-link" href="/1" th:href="${pageNum}-1">上一页</a>
-                   </li>
-                   <li class="page-item disabled" th:if="${pageNum ne null and pageNum le 1}">
-                      <a class="page-link" href="/1" th:href="${pageNum}-1">上一页</a>
-                   </li>
-                   <li class="page-item" th:each="i:${#numbers.sequence(1, pages)}"><a class="page-link"  href="/1" th:href="${i}" th:text="${i}">1</a></li>
-                   
-                   <li class="page-item" th:if="${pageNum eq null}">
-                      <a class="page-link" href="/1" th:href="${pages le 1}? 1 : 2">下一页</a>
-                   </li>
-                   <li class="page-item" th:if="${pageNum ne null and pageNum lt pages}">
-                      <a class="page-link" href="/1" th:href="${pageNum}+1">下一页</a>
-                   </li>
-                   <li class="page-item disabled" th:if="${pageNum ne null and pageNum ge pages}">
-                      <a class="page-link" href="/1" th:href="${pageNum}+1">下一页</a>
-                   </li>
-                </ul>
-            </nav>
 
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/img/examples/city.jpg');"></div>
+	    <div class="main main-raised">
+		    <div class="profile-content">
+                <div class="container">
+                    <br>
+                    <h2 class="title" th:text="${article.title}">文章标题</h2>
+                    <br>
+                    <div id="doc-content">
+                        <textarea class="form-control" style="display:none;" th:text="${article.content}"></textarea>
+                    </div>
+                    
+                    
+                    <br><br>
+            </div>
         </div>
-        
-    </div>
-    
-   
-   
+	</div>
+
     <footer class="footer ">
         <div class="container">
             <nav class="pull-left">
@@ -236,7 +153,8 @@
             </div>
         </div>
     </footer>
-    
+
+        
     <!-- 登陆的model -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="">
     <div class="modal-dialog modal-login" role="document">
@@ -297,7 +215,7 @@
         </div>
     </div>
 </div>
-    
+
     <!--   Core JS Files   -->
     <script src="/assets/js/core/jquery.min.js"></script>
     <script src="/assets/js/core/popper.min.js"></script>
@@ -312,17 +230,58 @@
     <script src="/assets/js/material-kit.js?v=2.0.0"></script>
     <!-- Fixed Sidebar Nav - js With initialisations For Demo Purpose, Don't Include it in your project -->
     <script src="/assets/assets-for-demo/js/material-kit-demo.js"></script>
+    
+    <!-- 引入富文本框 -->
+    <!-- <script src="/xheditor/xheditor-1.2.13.js"></script> -->
+    <!-- <script src="/xheditor/xheditor-1.2.2.min.js"></script>
+    <script src="/xheditor/xheditor_lang/zh-cn.js"></script> -->
+    <!-- <script src="/ckeditor/ckeditor.js"></script> -->
+    <script src="/mdeditor/editormd.min.js"></script>
+    
+    <script src="/mdeditor/lib/marked.min.js"></script>
+    <script src="/mdeditor/lib/prettify.min.js"></script>
+    <script src="/mdeditor/lib/raphael.min.js"></script>
+    <script src="/mdeditor/lib/underscore.min.js"></script>
+    <script src="/mdeditor/lib/sequence-diagram.min.js"></script>
+    <script src="/mdeditor/lib/flowchart.min.js"></script>
+    <script src="/mdeditor/lib/jquery.flowchart.min.js"></script>
+    
     <script th:inline="javascript">
     	/*<![CDATA[*/
+    	var testEditor;
         $(document).ready(function() {
         	var msg = [[${msg}]];
         	if(msg != null){
 	           alert(msg);
         	}
-            
+        	
+        	//CKEDITOR.replace('TextArea1');
+        	
+        	testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tex: true, // 默认不解析
+                flowChart: true, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                codeFold: true,
+            });
+        	
+        	/* $('#editor').xheditor({
+                plugins: getCodePlugin(),
+                layerShadow: 0,
+                tools: "Bold,Italic,Underline,Strikethrough,Fontface,Blocktag,FontSize,FontColor,BackColor,|,Align,List,Outdent,Indent,|,Img,Table,Emot,Link,Unlink,Code,|,CsdnFullScreen",
+                upImgUrl: "/UploadImage",
+                width: 600,
+                height: 560, 
+                upImgExt: 'jpg,jpeg,gif,png,bmp',
+                skin: "default",
+                loadCSS: xhCssUrl
+            }); */
+        	
             materialKitDemo.initFormExtendedDatetimepickers();
             // Sliders for demo purpose in refine cards section
-            /* var slider = document.getElementById('sliderRegular');
+            var slider = document.getElementById('sliderRegular');
 
             noUiSlider.create(slider, {
                 start: 40,
@@ -342,12 +301,12 @@
                     min: 0,
                     max: 100
                 }
-            }); */
+            });
             
             
         });
     	/*]]>*/
     </script>
+    
 </body>
-
 </html>
